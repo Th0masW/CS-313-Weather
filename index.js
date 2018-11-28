@@ -1,26 +1,27 @@
-var express = require('express')
-var path = require('path')
-var PORT = process.env.PORT || 5000
-var cors = require('cors')
-var app = express()
+const express = require('express')
+const path = require('path')
+const PORT = process.env.PORT || 5000
+const cors = require('cors')
 
-var corsOptions = {
-  origin: 'https://www.ncdc.noaa.gov',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+const corsOptions = {
+  origin: 'https://www.ncdc.noaa.gov'
 }
 
-//express()
-  //app.use(cors({ origin: 'https://www.ncdc.noaa.gov' }))
-  //app.options('*', cors(corsOptions))
-  app.use(express.static(path.join(__dirname, 'public')))
-  app.set('views', path.join(__dirname, 'views'))
-  app.set('view engine', 'ejs')
-  app.get('/', (req, res) => res.render('pages/index'))  
+express()
+  .options('*', cors())
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('pages/index'))  
   //Weather test page
-  app.options('https://www.ncdc.noaa.gov', cors(corsOptions))
-  app.get('/weather', cors(corsOptions),(req, res) => res.render('pages/weather'))
-  
-
-
-  app.listen(PORT, () => console.log(`Listening on ${ PORT }`)) 
+  .get('/weather', cors(corsOptions),(req, res) => res.render('pages/weather'))
+   // .get('/weather', fetchWeather);
 	
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+	function fetchWeather(request, response) {
+
+	var harCoded = "ad adasd";
+	var JSONdata = harCoded
+	
+	response.render('pages/weather', JSONdata)
+}
