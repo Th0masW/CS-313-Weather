@@ -11,13 +11,13 @@ var corsOptions = {
 
 //express()
   //app.use(cors({ origin: 'https://www.ncdc.noaa.gov' }))
-  app.options('*', cors(corsOptions))
+  //app.options('*', cors(corsOptions))
   app.use(express.static(path.join(__dirname, 'public')))
   app.set('views', path.join(__dirname, 'views'))
   app.set('view engine', 'ejs')
   app.get('/', (req, res) => res.render('pages/index'))  
   //Weather test page
-  //app.options('/weather', cors())
+  app.options('/weather', cors(corsOptions))
   app.get('/weather', cors(corsOptions),(req, res) => res.render('pages/weather'))
   
 
