@@ -3,12 +3,13 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 
 var cors = require('cors')
-var corsOptions = {
-    origin: 'https://www.ncdc.noaa.gov',
-    credentials: true };
+//var corsOptions = {
+ //   origin: 'https://www.ncdc.noaa.gov',
+ //   credentials: true };
 	
 express()
-  .use(cors(corsOptions))
+  .use(cors({ origin: 'https://www.ncdc.noaa.gov' }));
+ // .use(cors(corsOptions))
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
