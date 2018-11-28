@@ -1,22 +1,20 @@
-const express = require('express')
-const path = require('path')
-const PORT = process.env.PORT || 5000
+var express = require('express')
+var path = require('path')
+var PORT = process.env.PORT || 5000
+var app = express()
 
-var cors = require('cors')
-//var corsOptions = {
- //   origin: 'https://www.ncdc.noaa.gov',
- //   credentials: true };
-	 
-express()
+app.use(cors())
+
+//express()
  // .use(cors({ origin: 'https://www.ncdc.noaa.gov' }))
  // .use(cors(corsOptions))
-  .use(cors({credentials: false, origin: 'https://www.ncdc.noaa.gov'}))
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))  
+  app.use(cors({credentials: true, origin: 'https://www.ncdc.noaa.gov'}))
+  app.use(express.static(path.join(__dirname, 'public')))
+  app.set('views', path.join(__dirname, 'views'))
+  app.set('view engine', 'ejs')
+  app.get('/', (req, res) => res.render('pages/index'))  
   //Weather test page
-  .get('/weather', (req, res) => res.render('pages/weather'))
+  app.get('/weather', (req, res) => res.render('pages/weather'))
 	
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`)) 
+  app.listen(PORT, () => console.log(`Listening on ${ PORT }`)) 
 	
