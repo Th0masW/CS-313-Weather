@@ -3,7 +3,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 
 const cors = require('cors')
-//var app = express()
+var app = express()
 
 express()
   .options('*', cors()) // include before other routes
