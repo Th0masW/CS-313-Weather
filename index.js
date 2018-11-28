@@ -16,7 +16,9 @@ app.use(cors())
   //Weather test page
   app.get('/weather', (req, res) => res.render('pages/weather'))
   app.options('/weather', cors())
-  
+  app.get('/weather', cors(), function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for all origins!'})
+})
 
 
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`)) 
