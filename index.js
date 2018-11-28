@@ -2,10 +2,11 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
-var cors = require('cors')
-
-var app = express()
-app.use(cors())
+const cors = require('cors');
+const express = require('express');
+let app = express();
+.use(cors());
+.options('*', cors());
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
