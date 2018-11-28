@@ -14,8 +14,8 @@ app.use(cors())
   app.set('view engine', 'ejs')
   app.get('/', (req, res) => res.render('pages/index'))  
   //Weather test page
-  app.get('/weather', cors(),(req, res) => res.render('pages/weather'))
   app.options('/weather', cors())
+  app.get('/weather', cors(),(req, res) => res.render('pages/weather'))
   app.get('/weather', cors(), function (req, res, next) {
   res.json({msg: 'This is CORS-enabled for all origins!'})
 })
