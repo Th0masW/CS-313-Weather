@@ -11,7 +11,7 @@ var corsOptions = {
 
 //express()
   //app.use(cors({ origin: 'https://www.ncdc.noaa.gov' }))
-  app.options('*', cors())
+  app.options('*', cors(corsOptions))
   app.use(express.static(path.join(__dirname, 'public')))
   app.set('views', path.join(__dirname, 'views'))
   app.set('view engine', 'ejs')
