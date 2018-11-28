@@ -6,7 +6,7 @@ var cors = require('cors')
 //var corsOptions = {
  //   origin: 'https://www.ncdc.noaa.gov',
  //   credentials: true };
-	
+	 
 express()
   .use(cors({ origin: 'https://www.ncdc.noaa.gov' }));
  // .use(cors(corsOptions))
