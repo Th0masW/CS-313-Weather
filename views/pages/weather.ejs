@@ -42,6 +42,7 @@
 			});
 
 			xhr.open("GET", "https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_MLY&datatypeid=MLY-TAVG-NORMAL&startdate=2010-07-01&enddate=2010-08-01&stationid=GHCND:USC00047821");
+			xhr.setRequestHeader("Access-Control-Allow-Origin", "https://www.ncdc.noaa.gov");
 			xhr.setRequestHeader("token", "zycPIftdPBYeXUhNBlkqmlbOjeCqvoWy");
 			xhr.setRequestHeader("cache-control", "no-cache");
 			
