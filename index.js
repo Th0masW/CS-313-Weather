@@ -11,7 +11,6 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))  
   //Weather test page
-  .get('/weather', (req, res))
   .get('/weather', (req, res) => res.render('pages/weather'))
    // .get('/weather', fetchWeather);
 	
