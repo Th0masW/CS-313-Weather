@@ -4,21 +4,22 @@ var PORT = process.env.PORT || 5000
 var cors = require('cors')
 var app = express()
 
-app.use(cors())
+var corsOptions = {
+  origin: 'https://www.ncdc.noaa.gov',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 //express()
-  app.use(cors({ origin: 'https://www.ncdc.noaa.gov' }))
-
+  //app.use(cors({ origin: 'https://www.ncdc.noaa.gov' }))
+  app.options('*', cors())
   app.use(express.static(path.join(__dirname, 'public')))
   app.set('views', path.join(__dirname, 'views'))
   app.set('view engine', 'ejs')
   app.get('/', (req, res) => res.render('pages/index'))  
   //Weather test page
-  app.options('/weather', cors())
-  app.get('/weather', cors(),(req, res) => res.render('pages/weather'))
-  app.get('/weather', cors(), function (req, res, next) {
-  res.json({msg: 'This is CORS-enabled for all origins!'})
-})
+  //app.options('/weather', cors())
+  app.get('/weather', cors(corsOptions),(req, res) => res.render('pages/weather'))
+  
 
 
   app.listen(PORT, () => console.log(`Listening on ${ PORT }`)) 
