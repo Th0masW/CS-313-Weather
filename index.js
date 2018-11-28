@@ -17,7 +17,7 @@ var corsOptions = {
   app.set('view engine', 'ejs')
   app.get('/', (req, res) => res.render('pages/index'))  
   //Weather test page
-  app.options('/weather', cors(corsOptions))
+  app.options('https://www.ncdc.noaa.gov', cors(corsOptions))
   app.get('/weather', cors(corsOptions),(req, res) => res.render('pages/weather'))
   
 
