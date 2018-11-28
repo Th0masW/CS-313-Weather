@@ -8,8 +8,9 @@ var cors = require('cors')
  //   credentials: true };
 	 
 express()
-  .use(cors({ origin: 'https://www.ncdc.noaa.gov' }))
+ // .use(cors({ origin: 'https://www.ncdc.noaa.gov' }))
  // .use(cors(corsOptions))
+  .use(cors({credentials: true, origin: 'https://www.ncdc.noaa.gov'}));
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
