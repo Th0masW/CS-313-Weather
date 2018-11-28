@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 5000
 
 var cors = require('cors')
 var corsOptions = {
-    origin: '*',
+    origin: 'https://www.ncdc.noaa.gov',
     credentials: true };
 	
 express()
