@@ -7,7 +7,7 @@ var app = express()
 app.use(cors())
 
 //express()
- // app.use(cors({ origin: 'https://www.ncdc.noaa.gov' }))
+  app.use(cors({ origin: 'https://www.ncdc.noaa.gov' }))
 
   app.use(express.static(path.join(__dirname, 'public')))
   app.set('views', path.join(__dirname, 'views'))
