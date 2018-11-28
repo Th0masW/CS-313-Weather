@@ -1,6 +1,7 @@
 var express = require('express')
 var path = require('path')
 var PORT = process.env.PORT || 5000
+var cors = require('cors')
 var app = express()
 
 app.use(cors())
