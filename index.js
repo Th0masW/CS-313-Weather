@@ -14,7 +14,8 @@ express()
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))  
   //Weather test page
-  .get('/weather', cors(corsOptions),(req, res) => res.render('pages/weather'))
+ // .get('/weather', cors(corsOptions),(req, res) => res.render('pages/weather'))
+  .get('/weather', cors(corsOptions))
    // .get('/weather', fetchWeather);
 	
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
