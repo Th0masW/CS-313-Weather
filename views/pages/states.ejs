@@ -40,6 +40,24 @@
    
 </div>
 
+<script>
+function getWeather() {
+let str = window.location.pathname;
+let base_url = str.slice(0, str.lastIndexOf("/"));
+let url = '//' + window.location.host + base_url + "/theWeather";
+console.log(url);
+let xhttp = new XMLHttpRequest();
+xhttp.open("GET", url, true);
+xhttp.onreadystatechange = function() {
+console.log("ready state change");
+if(xhttp.readyState === 4 && xhttp.status === 200) {
+console.log("done changing");
+console.log(JSON.parse(xhttp.responseText));
+}
+};
+xhttp.send();
+}
+</script>
 
 </body>
 </html>
