@@ -33,7 +33,7 @@ express()
                 res.send(response);
             })
     })
-     
+      
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 	function fetchWeather(request, response) {
 
