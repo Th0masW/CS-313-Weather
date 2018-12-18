@@ -27,30 +27,7 @@
      
 	 <button type="button" onclick="loadDoc()">Request Data</button>
 	 <p id="demo"></p>
-	 <script>
-		   function loadDoc() { 
-		   
-		   var data = null;
-
-			var xhr = new XMLHttpRequest();
-			xhr.withCredentials = true;
-
-			xhr.addEventListener("readystatechange", function () {
-			  if (this.readyState === 4) {
-				document.getElementById("demo").innerHTML = this.responseText;
-			  }
-			});
-
-			xhr.open("GET", "https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_MLY&datatypeid=MLY-TAVG-NORMAL&startdate=2010-07-01&enddate=2010-08-01&stationid=GHCND:USC00047821");
-			//xhr.setRequestHeader("Access-Control-Allow-Origin", "https://www.ncdc.noaa.gov");
-			xhr.setRequestHeader("token", "zycPIftdPBYeXUhNBlkqmlbOjeCqvoWy");
-			xhr.setRequestHeader("cache-control", "no-cache");
-			//xhr.setRequestHeader("Postman-Token", "329bd4c4-5be3-44bc-8b7b-46d7dbc61524");
-			
-
-			xhr.send(data);
-	 }
-	 </script>
+	
 	 
     </div>
     <div class="col-md-6">
