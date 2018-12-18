@@ -3,6 +3,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const cors = require('cors')
 //var rp = require('request-promise')
+const http = require('http')
 
 const corsOptions = {
   origin: 'https://www.ncdc.noaa.gov'
@@ -21,17 +22,22 @@ express()
    //.get('/states', getStates)
 
     .get('/theWeather', function (req, res) {
-        console.log("button pushed");
+        console.log("******************************button pushed**********");
         let url = 'https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_MLY&datatypeid=MLY-TAVG-NORMAL&startdate=2010-07-01&enddate=2010-08-01&stationid=GHCND:USC00047821';
         let options = {
             uri: url,
             headers: { "token": "zycPIftdPBYeXUhNBlkqmlbOjeCqvoWy" },
             json: true
         };
-        rp(options)
-            .then(function (response) {
-                res.send(response);
-            })
+
+
+        var req = http.request(options, function (res) {
+            console.log('STATUS: ' + res.statusCode);
+            res.setEncoding('utf8');
+            res.on('data', function (chunk) {
+                console.log('BODY: ' + chunk);
+            });
+        });
     })
       
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
