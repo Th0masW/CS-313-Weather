@@ -16,7 +16,17 @@ express()
   //Weather test page
   .get('/weather', cors(corsOptions),(req, res) => res.render('pages/weather'))
    // .get('/weather', fetchWeather);
-	
+
+    .get('states', getStates)
+
+
+
+
+function getStates() {
+
+    placeHolder = "Hi there";
+    return placeHolder;
+}
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 	function fetchWeather(request, response) {
 
