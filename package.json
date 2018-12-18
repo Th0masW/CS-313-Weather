@@ -13,7 +13,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "ejs": "^2.5.6",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "request-promise-any": "^1.0.5"
   },
   "devDependencies": {
     "request": "^2.81.0",
