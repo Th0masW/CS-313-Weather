@@ -17,16 +17,8 @@ express()
   .get('/weather', cors(corsOptions),(req, res) => res.render('pages/weather'))
    // .get('/weather', fetchWeather);
 
-    .get('states', getStates)
+    .get('/states', getStates)
 
-
-
-
-function getStates() {
-
-    placeHolder = "Hi there";
-    return placeHolder;
-}
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 	function fetchWeather(request, response) {
 
@@ -34,4 +26,11 @@ function getStates() {
 	var JSONdata = harCoded
 	
 	response.render('pages/weather', JSONdata)
+}
+
+
+function getStates() {
+
+    placeHolder = "Hi there";
+    return placeHolder;
 }
