@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 const cors = require('cors')
-var rp = require('request-promise')
+//var rp = require('request-promise')
 const http = require('http')
 
 const corsOptions = {
@@ -23,34 +23,39 @@ express()
    .get('/states', getState)
  
 function getState(request, response) {
-    var postalType = request.query.postageType
-    var weight = request.query.weight
 
-    var JSONdata = doMath(postalType, weight)
+    var request = require("request");
+
+    var options = {
+        method: 'GET',
+        url: 'https://www.ncdc.noaa.gov/cdo-web/api/v2/data',
+        qs:
+        {
+            datasetid: 'NORMAL_MLY',
+            datatypeid: 'MLY-TAVG-NORMAL',
+            startdate: '2010-07-01',
+            enddate: '2010-08-01',
+            stationid: 'GHCND:USC00047821'
+        },
+        headers:
+        {
+            'Postman-Token': '52e9ac6a-52bf-4a6a-8263-b3ef13e21a1d',
+            'cache-control': 'no-cache',
+            token: 'zycPIftdPBYeXUhNBlkqmlbOjeCqvoWy'
+        }
+    };
+
+    request(options, function (error, response, body) {
+        if (error) throw new Error(error);
+
+        console.log(body);
+    });
 
     response.render('pages/states', JSONdata)
 }
 
 
-    .get('/theWeather', function (req, res) {
-        console.log("******************************button pushed**********");
-        let url = 'https://www.ncdc.noaa.gov/cdo-web/api/v2/data?datasetid=NORMAL_MLY&datatypeid=MLY-TAVG-NORMAL&startdate=2010-07-01&enddate=2010-08-01&stationid=GHCND:USC00047821';
-        let options = {
-            uri: url,
-            headers: { "token": "zycPIftdPBYeXUhNBlkqmlbOjeCqvoWy" },
-            json: true
-        };
 
-
-        var req = http.request(options, function (res) {
-            console.log('STATUS: ' + res.statusCode);
-            res.setEncoding('utf8');
-            res.on('data', function (chunk) {
-                console.log('BODY: ' + chunk);
-            });
-        });
-    })
-      
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 	function fetchWeather(request, response) {
 
