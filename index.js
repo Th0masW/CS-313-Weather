@@ -21,7 +21,7 @@ express()
    //.get('/states', cors(corsOptions), (req, res) => res.render('pages/states'))
    //.get('/states', getStates)
    .get('/states', getState)
-
+ 
 function getState(request, response) {
     var postalType = request.query.postageType
     var weight = request.query.weight
