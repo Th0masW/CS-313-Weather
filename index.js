@@ -34,7 +34,41 @@ express()
 }
 
 function getState(request, response) {
-    
+    var options = {
+        "method": "GET",
+        "hostname": [
+            "www",
+            "ncdc",
+            "noaa",
+            "gov"
+        ],
+        "path": [
+            "cdo-web",
+            "api",
+            "v2",
+            "data"
+        ],
+        "headers": {
+            "token": "zycPIftdPBYeXUhNBlkqmlbOjeCqvoWy",
+            "cache-control": "no-cache",
+            "Postman-Token": "976fb118-3bd6-4552-b0b6-1344e59dcc6f"
+        }
+    };
+
+    var req = http.request(options, function (res) {
+        var chunks = [];
+
+        res.on("data", function (chunk) {
+            chunks.push(chunk);
+        });
+
+        res.on("end", function () {
+            var body = Buffer.concat(chunks);
+            console.log(body.toString());
+        });
+    });
+
+    req.end();
 
     response.render('pages/states', JSONdata)
 }
