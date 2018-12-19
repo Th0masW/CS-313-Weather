@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 const cors = require('cors')
-var rp = require('request-promise')
+//var rp = require('request-promise')
 const http = require('http')
 
 const corsOptions = {
