@@ -3,7 +3,8 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const cors = require('cors')
 //var rp = require('request-promise')
-const http = require('http')
+//const http = require('http')
+var http = require("https");
 
 const corsOptions = {
   origin: 'https://www.ncdc.noaa.gov'
